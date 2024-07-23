@@ -1425,7 +1425,7 @@ export default class AVPlayer extends Emitter implements ControllerObserver {
 
   public getStreams() {
     return this.formatContext.streams.map(item => ({...item,
-      codecpar_str: JSON.stringify(item.codecpar)
+      type: item.codecpar.codecType
     }));
   }
 
