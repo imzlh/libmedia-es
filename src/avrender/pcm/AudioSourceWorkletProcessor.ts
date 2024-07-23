@@ -33,7 +33,7 @@ const BUFFER_LENGTH = (os.windows || os.mac || os.linux) ? 10 : 20
 
 export default class AudioSourceWorkletProcessor extends AudioWorkletProcessorBase {
 
-  private pullIPC: IPCPort
+  private pullIPC: IPCPort;
 
   private frontBuffer: Float32Array[]
   private backBuffer: Float32Array[]

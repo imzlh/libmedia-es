@@ -10,8 +10,8 @@
     "declaration": true,
     "downlevelIteration": true,
     "declarationMap": false,
-    "module": "esnext",
-    "target": "esnext",
+    "module": "ES2022",
+    "target": "ES2022",
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {

@@ -121,49 +121,7 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.ts?$/,
-          exclude: /__test__|WorkletProcessor2?(Base)?.ts$/,
-          use: [
-            +env.release ? {
-              loader: 'babel-loader',
-              options: {
-                cacheDirectory: true,
-                presets: [
-                  ['@babel/preset-env', {
-                    targets: env.legacy ? {
-                      'browsers': [
-                        'last 2 versions',
-                        'ie >= 10'
-                      ]
-                    } : {
-                      chrome: '69'
-                    }
-                  }]
-                ]
-              }
-            } : null
-          ]
-        },
-        {
-          test: /WorkletProcessor2?(Base)?.ts$/,
-          use: [
-            +env.release ? {
-              loader: 'babel-loader',
-              options: {
-                cacheDirectory: true,
-                presets: [
-                  ['@babel/preset-env', {
-                    targets: {
-                      chrome: env.legacy ? '49' : '69'
-                    }
-                  }]
-                ]
-              }
-            } : null
-          ]
-        },
-        {
-          test: /\.ts?$/,
+          test: /\.ts$/,
           use: [
             {
               loader: 'ts-loader',
