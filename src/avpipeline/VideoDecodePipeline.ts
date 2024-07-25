@@ -354,44 +354,20 @@ export default class VideoDecodePipeline extends Pipeline {
             || parameters.codecId === AVCodecID.AV_CODEC_ID_VVC
             || parameters.codecId === AVCodecID.AV_CODEC_ID_AV1
           ) {
-            threadCount = 2
+            threadCount = 4
           }
           if (framerate > 30) {
-            threadCount = 2
-            if (parameters.codecId === AVCodecID.AV_CODEC_ID_HEVC
-              || parameters.codecId === AVCodecID.AV_CODEC_ID_VVC
-              || parameters.codecId === AVCodecID.AV_CODEC_ID_AV1
-            ) {
-              threadCount = 4
-            }
+            threadCount = 6
           }
           else if (framerate > 60) {
-            threadCount = 4
-            if (parameters.codecId === AVCodecID.AV_CODEC_ID_HEVC
-              || parameters.codecId === AVCodecID.AV_CODEC_ID_VVC
-              || parameters.codecId === AVCodecID.AV_CODEC_ID_AV1
-            ) {
-              threadCount = 6
-            }
+            threadCount = 8
           }
         }
         else if (pixels > 2048 * 1080 && pixels <= 3840 * 2160) {
-          threadCount = 4
-          if (parameters.codecId === AVCodecID.AV_CODEC_ID_HEVC
-            || parameters.codecId === AVCodecID.AV_CODEC_ID_VVC
-            || parameters.codecId === AVCodecID.AV_CODEC_ID_AV1
-          ) {
-            threadCount = 6
-          }
+          threadCount = 12
         }
         else if (pixels > 3840 * 2160) {
-          threadCount = 6
-          if (parameters.codecId === AVCodecID.AV_CODEC_ID_HEVC
-            || parameters.codecId === AVCodecID.AV_CODEC_ID_VVC
-            || parameters.codecId === AVCodecID.AV_CODEC_ID_AV1
-          ) {
-            threadCount = 8
-          }
+          threadCount = 16
         }
         threadCount = Math.min(threadCount, navigator.hardwareConcurrency)
       }
